@@ -1,18 +1,20 @@
 .PHONY: clean build mandel min minmandel
 CC := clang  # GCC has breaking optimizations
-FLAGS := -Wall -Werror
+SRCS := $(shell find ./src -name '*.c')
+INCLUDE := include
+FLAGS := -Wall -Werror -I$(INCLUDE)
 
 clean:
 	rm -f ./bit ./dump.bin
 
 build:
-	$(CC) main.c -O3 $(FLAGS) -o bit
+	$(CC) $(SRCS) -O3 $(FLAGS) -o bit
 
 debug:
-	$(CC) main.c -ggdb -Wno-int-converion -o bit
+	$(CC) $(SRCS) -ggdb $(FLAGS) -o bit
 
 mandel: build
-	./but sample/mandel.bf
+	./bit samples/mandel.bf
 
 min:
 	$(CC) min.c -O3 -Wno-int-conversion -o bit

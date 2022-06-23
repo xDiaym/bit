@@ -9,7 +9,7 @@
         "type": "cppdbg",
         "request": "launch",
         "program": "${workspaceFolder}/bit",
-        "args": ["test.bf"],
+        "args": ["${workspaceFolder}/samples/mandel.bf"],
         "stopAtEntry": false,
         "cwd": "${fileDirname}",
         "environment": [],
@@ -28,6 +28,5 @@
             }
         ]
       }
-
     ]
 }

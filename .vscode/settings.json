@@ -20,6 +20,8 @@
         "sstream": "c",
         "stop_token": "c",
         "streambuf": "c",
-        "*.inc": "c"
-    }
+        "*.inc": "c",
+        "compiler.h": "c"
+    },
+    "C_Cpp.default.includePath": ["${workspaceFolder}/include"]
 }
