@@ -1,19 +1,21 @@
 #ifndef _VEC_H_
 #define _VEC_H_
+#include <stdint.h>
 
-#include <stdlib.h>
-#define INIT_VEC_SZ (256)
+#define INITIAL_VECTOR_CAPACITY (16)
 
-typedef struct {
-  char* data;
-  int cap;
-  int size;
-} vec;
 
-void vec_new(vec* v);
-void vec_del(vec* v);
+typedef struct _Vector Vector;
 
-void vec_push(vec* v, char* data, int len);
-void vec_write_addr(vec* v, int addr, int offset);
+struct _Vector {
+  void *data;
+  uint64_t lenght;
+};
+
+Vector* vector_new(uint64_t element_size);
+void vector_free(Vector *v);
+
+uint64_t vector_extend(Vector *v, void *elems, uint64_t count);
+uint64_t vector_append(Vector *v, void *elem);
 
 #endif

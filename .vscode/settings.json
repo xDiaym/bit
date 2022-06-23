@@ -21,7 +21,18 @@
         "stop_token": "c",
         "streambuf": "c",
         "*.inc": "c",
-        "compiler.h": "c"
+        "compiler.h": "c",
+        "vec.h": "c"
     },
-    "C_Cpp.default.includePath": ["${workspaceFolder}/include"]
+    "C_Cpp.default.includePath": [
+        "${workspaceFolder}/include"
+    ],
+    "C_Cpp.default.configurationProvider": "ms-vscode.makefile-tools",
+    "makefile.launchConfigurations": [
+        {
+            "cwd": "/home/mtw/projects/cpp/с",
+            "binaryPath": "/home/mtw/projects/cpp/с/bit",
+            "binaryArgs": []
+        }
+    ]
 }

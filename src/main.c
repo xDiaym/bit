@@ -23,16 +23,16 @@ char* read_file(const char *fname) {
 }
 
 void run(char* text) {
-  vec v; vec_new(&v);
-  compile(text, &v);
+  Vector *v = vector_new(sizeof(char));
+  compile(text, v);
   char tape[30000] = {0};
 
-  void(*fn)(char*, int(*)(), int(*)(int)) = mmap(NULL, v.size, PROT_READ | PROT_WRITE | PROT_EXEC, MAP_ANON | MAP_PRIVATE, 0, 0);
-  memcpy(fn, v.data, v.size);
-  fn(tape, getchar, putchar);
-  munmap(fn, v.size);
+  void(*fn)(char*, int(*)(), int(*)(int)) = mmap(NULL, v->lenght, PROT_READ | PROT_WRITE | PROT_EXEC, MAP_ANON | MAP_PRIVATE, 0, 0);
+  memcpy(fn, v->data, v->lenght);
+  vector_free(v);
 
-  vec_del(&v);
+  fn(tape, getchar, putchar);
+  munmap(fn, v->lenght);
 }
 
 int main(int c, char **argv) {
